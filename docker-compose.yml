@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - .db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=slim_postgres_data
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgrespw
+    ports:
+      - "5432:5432"
+
+  web:
+    build: ./src/
+    command: ./entrypoint.sh
+    volumes:
+      - .:/code
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+

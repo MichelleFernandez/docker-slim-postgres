@@ -11,6 +11,6 @@ environments:
         host: db
         name: slim_postgres_data
         user: postgres
-        pass: postgresql
+        pass: postgrespw
         port: 5432
         charset: utf8
